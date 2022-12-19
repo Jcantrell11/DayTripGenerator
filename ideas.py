@@ -10,12 +10,14 @@ print("Here is the trip that was put together for you:")
 print("")
 import random
 
-destination = "The destination that was chosen for you is" + " " + random.choice(destinations_list) + "."
+destination = random.choice(destinations_list)
+
+destination_message = f"The destination that was chosen for you is {destination}"
 transportation = "You will be traveling in style in a" + " " + random.choice(transportation_list) + "."
 entertainment = "For your entertainment you will be" + " " + random.choice(entertainment_list) + "."
 restaurants = "Finally, for dinner you will be visiting" + " " + random.choice(restaurants_list) + "."
 
-print(destination)
+print(destination_message)
 print("")
 print(transportation)
 print("")
@@ -24,6 +26,15 @@ print("")
 print(restaurants) 
 print("")
 
-def prompt_customer(question_one, answer_one):
-    result = question_one + answer_one
+answer = input("Is this location ok with you? Enter y/n: ")
+
+def destination_change(answer):
+    while answer != "y":
+        destination = random.choice(destinations_list)
+        answer = input(f"We are sorry that you did not like that destination. We have selected {destination} as another option. Does this location work for you? ")
+    else:
+        print(f"You have chosen {(destination)} for the location of your day trip! Now let's move on and pick how you will get there.") 
+       
+
+destination_change(answer)
 

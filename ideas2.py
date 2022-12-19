@@ -1,35 +1,34 @@
 destinations_list = ["Las Vegas", "New York", "Miami", "San Diego", "Los Angeles"]
-restaurants_list = ["Steakhouse", "Pizza Joint", "Japenese Restaurant", "Family Style", "Buffet Restaurant"]
+restaurants_list = ["Steakhouse", "Pizza", "Japenese", "Family Style", "Buffet"]
 transportation_list = ["Plane", "Car", "Train", "Bus", "Motorcycle"]
 entertainment_list = ["Walking the Vegas Strip", "Going to Sea World", "Going to basketball game", "Going on a bike ride through Central Park", "Going to the beach"]
 
-def welcome():
-    message = "Welcome to your dream day vacation! We here at Dream Trips USA are here to take care you! If you are not sure where you would like to go no worries! We will plan your dream day vacation for you."
-    print(message)
-welcome()
+print("")
+print('Welcome to your dream day vacation! We here at Dream Trips USA are here to take care you!')
+print('If you are not sure where you would like to go no worries! We will plan your dream day vacation for you.')
+print("")
 
+import random
+destination = random.choice(destinations_list)
+transportation = random.choice(transportation_list)
+entertainment = random.choice(entertainment_list)
+restauraunt = random.choice(restaurants_list)
 
-import random 
-def transportation(): 
-    intro = f"We will first pick out the location of your trip. We have chosen {random.choice(destinations_list)} for you. {input("Does this location work for you? Enter y/n:")}"
-    print(intro)
-    
-transportation()
+# Destination meesage and function 
 
+destination_message = f"We have chosen for you to vacation in {destination} for the day."
+print(destination_message)
+print("")
 
-# import random 
+answer = input("Is this location ok with you? Enter y/n: ")
 
-# def destination_message():
-#     destination = "We have chosen for you to vacation in" + " " + random.choice(destinations_list) + " " + "for the day!"
-#     print(destination)
+def destination_change(answer):
+    while answer != "y":
+        global destination
+        destination = random.choice(destinations_list)
+        answer = input(f"We are sorry that you did not like that destination. We have selected {destination} as another option. Does this location work for you? ")
+    else: 
+        print(f"You have chosen {destination} for the location of your day trip! Now let's move on and pick how you will get there.")
 
-# destination_message()
-# print("")
-
-# answer = input("Is this location ok with you? Enter y/n: ")
-# if answer == "n":
-#     print(f"I am sorry that you don't like that location. How does {random.choice(destinations_list)} sound?")
-# if answer == "y":
-#     print("Awesome Choice! You will really enjoy it there. Now let's move on to your transportation.")
-
+destination_change(answer)
 
